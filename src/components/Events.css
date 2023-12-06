@@ -1,0 +1,21 @@
+/* EventsList.css */
+.events-list {
+    width: 300px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .events-list h2 {
+    margin-bottom: 10px;
+  }
+  
+  .events-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .events-list li {
+    margin-bottom: 8px;
+  }
+  

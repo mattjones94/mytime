@@ -1,0 +1,22 @@
+/* AddEventButton.css */
+.add-event-button {
+    position: fixed;
+    bottom: 20px;
+    right: 300px;
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-event-button span {
+    line-height: 1; /* Ensure proper centering of the plus sign */
+  }
+  
