@@ -1,10 +1,12 @@
-// Calendar.js
 import React, { useState } from "react";
 import "./Calendar.css";
 
-const Calendar = () => {
+const Calendar = ({
+  selectedDate,
+  onDayClick, // Rename to onDayClick
+  eventsData,
+}) => {
   const [date, setDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const daysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -20,18 +22,25 @@ const Calendar = () => {
 
     const days = [];
 
-    for (let i = 0; i < startDay; i++) {
-      days.push(<div key={i}></div>);
-    }
-
     for (let i = 1; i <= totalDays; i++) {
+      const eventsOnDay = eventsData.filter(
+        (event) =>
+          event.date &&
+          event.date.getFullYear() === date.getFullYear() &&
+          event.date.getMonth() === date.getMonth() &&
+          event.date.getDate() === i
+      );
+
       days.push(
         <div
           key={i + startDay}
-          className={`day ${selectedDate === i ? "selected" : ""}`}
+          className={`day ${
+            selectedDate && selectedDate.getDate() === i ? "selected" : ""
+          }`}
           onClick={() => handleDayClick(i)}
         >
           {i}
+          {eventsOnDay.length > 0 && <div className="event-indicator"></div>}
         </div>
       );
     }
@@ -40,8 +49,8 @@ const Calendar = () => {
   };
 
   const handleDayClick = (day) => {
-    setSelectedDate(day);
-    // You can perform any other action when a day is clicked
+    const newSelectedDate = new Date(date.getFullYear(), date.getMonth(), day);
+    onDayClick(newSelectedDate); // Call the callback with the new selected date
   };
 
   const handlePrevMonthClick = () => {
@@ -66,13 +75,13 @@ const Calendar = () => {
           <button onClick={handleNextMonthClick}>&gt;</button>
         </div>
         <div className="days">
-          <div className="day">Sun</div>
-          <div className="day">Mon</div>
-          <div className="day">Tue</div>
-          <div className="day">Wed</div>
-          <div className="day">Thu</div>
-          <div className="day">Fri</div>
-          <div className="day">Sat</div>
+          <div className="weekday">Sun</div>
+          <div className="weekday">Mon</div>
+          <div className="weekday">Tue</div>
+          <div className="weekday">Wed</div>
+          <div className="weekday">Thu</div>
+          <div className="weekday">Fri</div>
+          <div className="weekday">Sat</div>
           {renderDays()}
         </div>
       </div>
