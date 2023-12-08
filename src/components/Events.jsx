@@ -1,35 +1,33 @@
-// Events.js
+// Events.jsx
 import React from "react";
 import "./Events.css";
+import EventCard from "./EventCard";
 
 const Events = ({ selectedDate, eventsData }) => {
-  console.log("Selected Date:", selectedDate);
-  console.log("Events Data:", eventsData);
-
-  const filteredEvents = eventsData.filter((event) => {
-    console.log("Event Date:", event.date);
-
-    // Add a check for selectedDate to prevent null error
-    return (
+  const filteredEvents = eventsData.filter(
+    (event) =>
       event.date &&
       selectedDate &&
       selectedDate instanceof Date &&
       event.date.getFullYear() === selectedDate.getFullYear() &&
       event.date.getMonth() === selectedDate.getMonth() &&
       event.date.getDate() === selectedDate.getDate()
-    );
-  });
-
-  console.log("Filtered Events:", filteredEvents);
+  );
 
   return (
     <div className="events-list">
       <h2>My Events</h2>
-      <ul>
-        {filteredEvents.map((event, index) => (
-          <li key={index}>{event.title}</li>
-        ))}
-      </ul>
+      {filteredEvents.length === 0 ? (
+        <p>No events for the selected date</p>
+      ) : (
+        <ul>
+          {filteredEvents.map((event, index) => (
+            <li key={index}>
+              <EventCard event={event} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

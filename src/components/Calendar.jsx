@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import "./Calendar.css";
 
-const Calendar = ({
-  selectedDate,
-  onDayClick, // Rename to onDayClick
-  eventsData,
-}) => {
+const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
   const [date, setDate] = useState(new Date());
 
   const daysInMonth = (month, year) => {
@@ -31,6 +27,10 @@ const Calendar = ({
           event.date.getDate() === i
       );
 
+      const uniqueColors = [
+        ...new Set(eventsOnDay.map((event) => event.color)),
+      ];
+
       days.push(
         <div
           key={i + startDay}
@@ -40,7 +40,13 @@ const Calendar = ({
           onClick={() => handleDayClick(i)}
         >
           {i}
-          {eventsOnDay.length > 0 && <div className="event-indicator"></div>}
+          {uniqueColors.map((color, index) => (
+            <div
+              key={index}
+              className="event-indicator"
+              style={{ backgroundColor: color }}
+            ></div>
+          ))}
         </div>
       );
     }
