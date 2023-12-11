@@ -1,0 +1,57 @@
+/* EditModal.css */
+.edit-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Ensure the modal is above other elements */
+  }
+  
+  .edit-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  
+  .edit-modal h2 {
+    margin-bottom: 10px;
+  }
+  
+  .edit-modal label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .edit-modal input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 4px;
+  }
+  
+  .edit-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .edit-modal-buttons button {
+    padding: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 6px;
+    border: 2px solid black;
+  }
+  
+  .edit-modal-buttons button:nth-child(2) {
+    background-color: #ff5757;
+    color: white;
+  }
+  

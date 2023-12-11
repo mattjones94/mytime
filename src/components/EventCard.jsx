@@ -1,10 +1,12 @@
 // EventCard.jsx
 import React, { useState } from "react";
 import "./EventCard.css";
+import EditModal from "./EditModal"; // Import your EditModal component
+import DeleteModal from "./DeleteModal"; // Import your DeleteModal component
+import ViewModal from "./ViewModal"; // Import your ViewModal component
 
 const EventCard = ({ event }) => {
   const formatDate = (date) => {
-    // Format date as needed (e.g., HH:mm AM/PM)
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 
@@ -15,13 +17,9 @@ const EventCard = ({ event }) => {
       purple: "#800080",
       yellow: "#ffff00",
       green: "#00ff00",
-      // Add more colors as needed
     };
 
-    // Convert colorName to lowercase for case-insensitive matching
     const lowerCaseColorName = colorName.toLowerCase();
-
-    // Check if the colorName is in the colorMap, otherwise return a default color
     return colorMap[lowerCaseColorName] || "#000000";
   };
 
@@ -46,13 +44,47 @@ const EventCard = ({ event }) => {
     }
   };
 
-  const opacity = 0.8; // Set the desired opacity value (between 0 and 1)
-
-  // State to manage the visibility of the kebab menu
+  const opacity = 0.8;
   const [isMenuVisible, setMenuVisibility] = useState(false);
+  const [isEditModalVisible, setEditModalVisibility] = useState(false);
+  const [isDeleteModalVisible, setDeleteModalVisibility] = useState(false);
+  const [isViewModalVisible, setViewModalVisibility] = useState(false);
 
   const toggleMenu = () => {
     setMenuVisibility(!isMenuVisible);
+  };
+
+  const openEditModal = () => {
+    setMenuVisibility(false); // Close the menu when opening the modal
+    setEditModalVisibility(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModalVisibility(false);
+  };
+
+  const openDeleteModal = () => {
+    setMenuVisibility(false); // Close the menu when opening the modal
+    setDeleteModalVisibility(true);
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModalVisibility(false);
+  };
+
+  const confirmDelete = () => {
+    // Perform the deletion logic here
+    // For now, just close the modal
+    closeDeleteModal();
+  };
+
+  const openViewModal = () => {
+    setMenuVisibility(false); // Close the menu when opening the modal
+    setViewModalVisibility(true);
+  };
+
+  const closeViewModal = () => {
+    setViewModalVisibility(false);
   };
 
   return (
@@ -62,8 +94,8 @@ const EventCard = ({ event }) => {
         borderColor: newShade(hexColor, -25),
         backgroundColor: `${newShade(hexColor, 50)}${Math.round(
           opacity * 255
-        ).toString(32)}`, // Adjust opacity
-        color: "black", // Solid color for text
+        ).toString(32)}`,
+        color: "black",
       }}
     >
       <div className="event-details">
@@ -84,14 +116,43 @@ const EventCard = ({ event }) => {
         &#8942;
         {isMenuVisible && (
           <div className="menu-options">
-            <div className="menu-options-item">Edit</div>
-            <div className="menu-options-item">View</div>
-            <div className="menu-options-item" style={{ color: "red" }}>
+            <div className="menu-options-item" onClick={openEditModal}>
+              Edit
+            </div>
+            <div className="menu-options-item" onClick={openViewModal}>
+              View
+            </div>
+            <div
+              className="menu-options-item"
+              style={{ color: "red" }}
+              onClick={openDeleteModal}
+            >
               Delete
             </div>
           </div>
         )}
       </div>
+
+      {isEditModalVisible && (
+        <EditModal event={event} onClose={closeEditModal} />
+      )}
+
+      {isDeleteModalVisible && (
+        <DeleteModal
+          event={event}
+          onDelete={confirmDelete}
+          onClose={closeDeleteModal}
+        />
+      )}
+
+      {isViewModalVisible && (
+        <ViewModal
+          event={event}
+          onEdit={openEditModal}
+          onDelete={openDeleteModal}
+          onClose={closeViewModal}
+        />
+      )}
     </div>
   );
 };

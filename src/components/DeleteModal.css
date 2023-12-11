@@ -1,0 +1,48 @@
+/* DeleteModal.css */
+.delete-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Ensure the modal is above other elements */
+  }
+  
+  .delete-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  
+  .delete-modal h2 {
+    margin-bottom: 10px;
+  }
+  
+  .delete-modal p {
+    margin-bottom: 20px;
+  }
+  
+  .delete-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .delete-modal-buttons button {
+    padding: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 6px;
+  }
+  
+  .delete-modal-buttons button:nth-child(2) {
+    background-color: #ff5757;
+    color: white;
+  }
+  

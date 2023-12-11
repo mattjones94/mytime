@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Calendar.css";
 
 const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
   const [date, setDate] = useState(new Date());
+  const [initialSelectedDate, setInitialSelectedDate] = useState(null);
+
+  useEffect(() => {
+    // Set the initially selected date when the component mounts
+    setInitialSelectedDate(new Date());
+  }, []);
 
   const daysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -35,7 +41,10 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
         <div
           key={i + startDay}
           className={`day ${
-            selectedDate && selectedDate.getDate() === i ? "selected" : ""
+            (initialSelectedDate && initialSelectedDate.getDate() === i) ||
+            (selectedDate && selectedDate.getDate() === i)
+              ? "selected"
+              : ""
           }`}
           onClick={() => handleDayClick(i)}
         >
