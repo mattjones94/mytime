@@ -4,15 +4,37 @@
     color: white;
     padding: 10px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgb(51, 152, 219, 0.1);
+    box-shadow: 0px 2px 4px rgb(51, 152, 219, 0.1);
   }
   
   .header h1 {
-    margin: 0;
+    margin-left: 10px;
     color: whitesmoke
   }
+
+  .header p {
+    font-size: 25px;
+  }
+  
+  .user-button{
+    cursor: pointer;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+
+  .header-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+
   
   /* Add additional styling for other header elements/buttons */
   

@@ -24,9 +24,10 @@
   padding: 10px;
   border-radius: 20px;
   color: white;
+  transition: transform 0.5s ease;
 }
 
-.calendar-header button {
+.month-buttons {
   background: none;
   border: none;
   cursor: pointer;
@@ -40,6 +41,7 @@
   gap: 15px;
   color: white;
   padding: 20px;
+  transition: transform 0.5s ease;
 }
 
 .weekday {
@@ -64,6 +66,12 @@
   position: relative;
 }
 
+.faded-day {
+  color: #999;
+  border: 1px solid rgb(153, 153, 153, .3);
+  cursor: pointer;
+}
+
 .day:hover {
   background-color: grey;
   border-radius: 5px;
@@ -82,14 +90,11 @@
   right: 2px;
   width: 6px;
   height: 6px;
-  background-color: #ff0000; /* Indicator color */
+  background-color: #ff0000;
   border-radius: 50%;
 }
 
-
 @media only screen and (max-width: 600px) {
-
-
   .calendar-container {
     flex-direction: column;
     align-items: top;
@@ -112,5 +117,4 @@
   .day {
     height: 40px;
   }
-
 }

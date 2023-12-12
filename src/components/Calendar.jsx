@@ -3,12 +3,13 @@ import "./Calendar.css";
 
 const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
   const [date, setDate] = useState(new Date());
-  const [initialSelectedDate, setInitialSelectedDate] = useState(null);
 
   useEffect(() => {
-    // Set the initially selected date when the component mounts
-    setInitialSelectedDate(new Date());
-  }, []);
+    // Highlight the selected date or today's date when the component mounts
+    if (!selectedDate) {
+      onDayClick(new Date());
+    }
+  }, [onDayClick, selectedDate]);
 
   const daysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -21,9 +22,24 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
   const renderDays = () => {
     const totalDays = daysInMonth(date.getMonth(), date.getFullYear());
     const startDay = startOfMonth();
-
     const days = [];
 
+    // Fill in the preceding empty cells with days from the previous month
+    const prevMonthDays = daysInMonth(date.getMonth() - 1, date.getFullYear());
+    for (let i = startDay - 1; i >= 0; i--) {
+      const day = prevMonthDays - i;
+      days.push(
+        <div
+          key={`prev${i}`}
+          className={`day faded-day`}
+          onClick={() => handlePrevMonthDayClick(day)}
+        >
+          {day}
+        </div>
+      );
+    }
+
+    // Fill in the days of the current month
     for (let i = 1; i <= totalDays; i++) {
       const eventsOnDay = eventsData.filter(
         (event) =>
@@ -41,8 +57,8 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
         <div
           key={i + startDay}
           className={`day ${
-            (initialSelectedDate && initialSelectedDate.getDate() === i) ||
-            (selectedDate && selectedDate.getDate() === i)
+            (selectedDate && selectedDate.getDate() === i) ||
+            (selectedDate === null && new Date().getDate() === i)
               ? "selected"
               : ""
           }`}
@@ -60,12 +76,36 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
       );
     }
 
+    // Fill in the remaining empty cells with days from the next month
+    const nextMonthDays = 42 - startDay - totalDays;
+    for (let i = 1; i <= nextMonthDays; i++) {
+      days.push(
+        <div
+          key={`next${i}`}
+          className={`day faded-day`}
+          onClick={() => handleNextMonthDayClick(i)}
+        >
+          {i}
+        </div>
+      );
+    }
+
     return days;
   };
 
   const handleDayClick = (day) => {
     const newSelectedDate = new Date(date.getFullYear(), date.getMonth(), day);
-    onDayClick(newSelectedDate); // Call the callback with the new selected date
+    onDayClick(newSelectedDate);
+  };
+
+  const handlePrevMonthDayClick = (day) => {
+    // Navigate to the previous month when a faded day from the previous month is clicked
+    setDate(new Date(date.getFullYear(), date.getMonth() - 1, day));
+  };
+
+  const handleNextMonthDayClick = (day) => {
+    // Navigate to the next month when a faded day from the next month is clicked
+    setDate(new Date(date.getFullYear(), date.getMonth() + 1, day));
   };
 
   const handlePrevMonthClick = () => {
@@ -80,14 +120,18 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
     <div className="calendar-container">
       <div className="calendar">
         <div className="calendar-header">
-          <button onClick={handlePrevMonthClick}>&lt;</button>
+          <button className="month-buttons" onClick={handlePrevMonthClick}>
+            &lt;
+          </button>
           <h2>
             {new Date(date).toLocaleDateString("default", {
               month: "long",
               year: "numeric",
             })}
           </h2>
-          <button onClick={handleNextMonthClick}>&gt;</button>
+          <button className="month-buttons" onClick={handleNextMonthClick}>
+            &gt;
+          </button>
         </div>
         <div className="days">
           <div className="weekday">Sun</div>

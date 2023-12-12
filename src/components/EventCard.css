@@ -46,24 +46,31 @@
     font-size: 18px;
     cursor: pointer;
     color: #777;
+    
   }
 
   .menu-options {
     position: absolute;
     bottom: 50%; /* Position above the card */
     right: 15px;
-    background-color: white;
+    background-color: rgb(255, 255, 255, .8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
+    border-radius: 8px;
+    border: 1px solid white;
     padding: 2px;
     display: flex;
     flex-direction: column;
     z-index: 1; /* Ensure the menu is above other elements */
+
+  }
+
+  .menu-options-item{
+    background-color: transparent;
   }
 
   .menu-options-item:hover{
-    border-radius: 10px;
-    background-color: rgba(127, 125, 125, 0.6);
+    border-radius: 8px;
+    background-color: rgb(149, 227, 101);
     color: white;
 
   }
