@@ -6,6 +6,7 @@ import Events from "./components/Events";
 import Header from "./components/Header";
 import AddEventButton from "./components/AddEvent";
 import eventsData from "./data/eventsData";
+import ProximityEventCard from "./components/ProximityEventCard";
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -18,13 +19,19 @@ function App() {
     <div className="App">
       <Header />
       <div className="master-container">
-        <Calendar
-          selectedDate={selectedDate}
-          onDayClick={handleDayClick} // Pass the handleDayClick callback
-          eventsData={eventsData}
-        />
-        <Events selectedDate={selectedDate} eventsData={eventsData} />
-        <AddEventButton />
+        <div className="proximity-calendar-container">
+          <p className="upcoming-events-title">Upcoming Events:</p>
+          <ProximityEventCard eventsData={eventsData} />
+          <Calendar
+            selectedDate={selectedDate}
+            onDayClick={handleDayClick} // Pass the handleDayClick callback
+            eventsData={eventsData}
+          />
+        </div>
+        <div className="master-events-container">
+          <Events selectedDate={selectedDate} eventsData={eventsData} />
+          <AddEventButton />
+        </div>
       </div>
     </div>
   );

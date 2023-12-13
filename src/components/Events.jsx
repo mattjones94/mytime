@@ -18,7 +18,7 @@ const Events = ({ selectedDate, eventsData }) => {
     <div className="events-list">
       <h2>My Events</h2>
       {filteredEvents.length === 0 ? (
-        <p>No events for the selected date</p>
+        <p className="default-events-list">No events for the selected date</p>
       ) : (
         <ul>
           {filteredEvents.map((event, index) => (

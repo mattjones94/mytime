@@ -1,0 +1,101 @@
+.proximity-event-card-container {
+  height: 150px;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  margin-left: 5px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  /* Custom Scrollbar Styles */
+  transition: webkit-scrollbar-thumb-background-color 0.5s ease;
+
+
+  /* Webkit Browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    width: 3px;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    background-color: green;
+  }
+}
+
+.proximity-event-card-container:hover{
+  &::-webkit-scrollbar-thumb {
+    background-color: green;
+  }
+
+}
+
+
+.proximity-card {
+  min-width: 250px;
+  border: 1px solid #ccc;
+  background-color: blueviolet;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+}
+
+.title {
+  margin: 0;
+  color: white;
+}
+
+.card-body {
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.time,
+.date {
+  margin: 0;
+  color: #919191;
+  font-size: 12px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.view-button {
+  background-color: transparent;
+  color: blue;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view-button:hover {
+  /* background-color: #2980b9; */
+}

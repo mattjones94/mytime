@@ -17,6 +17,29 @@
    height: calc(100% - 57px);
 }
 
+.proximity-calendar-container{
+  width: 75%;
+  /* background-color: aliceblue; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+}
+
+.master-events-container{
+  width: 25%;
+  padding: 10px;
+
+  /* background-color: aliceblue; */
+}
+
+.upcoming-events-title{
+  color: white;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .master-container {
     width: 100%;
@@ -26,6 +49,15 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+  }
+
+  .proximity-calendar-container{
+    width: 90%;
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  
   }
 
   .calendar-container {
