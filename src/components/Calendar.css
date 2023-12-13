@@ -22,9 +22,19 @@
   justify-content: space-around;
   align-items: center;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 20px 20px 0px 0px;
   color: white;
   transition: transform 0.5s ease;
+  /* border-bottom: 1px solid whitesmoke; */
+}
+
+hr{
+  /* border-top: 8px solid whitesmoke; */
+  color: whitesmoke;
+  border-radius: 5px;
+  width: 80%;
+  margin: auto;
+
 }
 
 .month-buttons {
@@ -33,6 +43,16 @@
   cursor: pointer;
   font-size: 16px;
   color: whitesmoke;
+  padding: 10px;
+}
+
+.month-buttons:active {
+  background: none;
+  border: 1px solid white;
+  cursor: pointer;
+  font-size: 16px;
+  color: whitesmoke;
+
 }
 
 .days {
@@ -75,6 +95,12 @@
 .day:hover {
   background-color: grey;
   border-radius: 5px;
+}
+
+.day:active {
+  background-color: grey;
+  border-radius: 5px;
+  border: 1px solid #fff;
 }
 
 .selected {

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Calendar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 
 const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
   const [date, setDate] = useState(new Date());
@@ -120,8 +124,9 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
     <div className="calendar-container">
       <div className="calendar">
         <div className="calendar-header">
-          <button className="month-buttons" onClick={handlePrevMonthClick}>
-            &lt;
+          <button style={{ borderBottomLeftRadius: 10,borderTopLeftRadius: 10 }} className="month-buttons" onClick={handlePrevMonthClick}>
+            {/* &lt; */}
+            <FontAwesomeIcon icon={faChevronLeft} />
           </button>
           <h2>
             {new Date(date).toLocaleDateString("default", {
@@ -129,10 +134,12 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
               year: "numeric",
             })}
           </h2>
-          <button className="month-buttons" onClick={handleNextMonthClick}>
-            &gt;
+          <button style={{ borderBottomRightRadius: 10,borderTopRightRadius: 10 }} className="month-buttons" onClick={handleNextMonthClick}>
+            {/* &gt; */}
+            <FontAwesomeIcon icon={faChevronRight} />
           </button>
         </div>
+        <hr></hr>
         <div className="days">
           <div className="weekday">Sun</div>
           <div className="weekday">Mon</div>
