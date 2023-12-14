@@ -13,8 +13,11 @@
   width: 60%;
   height: 90%;
   font-family: 'Arial', sans-serif;
-  background-color: black;
+  /* background-color: black; */
+  background-color: rgb(245, 245, 245, 0.7);
   border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3498db;
 }
 
 .calendar-header {
@@ -24,14 +27,16 @@
   align-items: center;
   padding: 10px;
   border-radius: 20px 20px 0px 0px;
-  color: white;
+  /* color: white; */
+  color: black;
   /* transition: transform 0.5s ease; */
   /* border-bottom: 1px solid whitesmoke; */
 }
 
 hr{
   /* border-top: 8px solid whitesmoke; */
-  color: whitesmoke;
+  /* color: whitesmoke; */
+  color: black;
   border-radius: 5px;
   width: 60%;
   margin: auto;
@@ -43,16 +48,19 @@ hr{
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: whitesmoke;
+  /* color: whitesmoke; */
+  color: black;
   padding: 10px;
 }
 
 .month-buttons:active {
   background: none;
-  border: 1px solid white;
+  /* border: 1px solid white; */
+  border: 1px solid black;
   cursor: pointer;
   font-size: 16px;
-  color: whitesmoke;
+  /* color: whitesmoke; */
+  color: black;
 
 }
 
@@ -60,7 +68,8 @@ hr{
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 15px;
-  color: white;
+  /* color: white; */
+  color: black;
   padding: 20px;
   transition: transform 0.5s ease;
 }
@@ -83,7 +92,8 @@ hr{
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  border: 1px solid rgb(149, 227, 101);
+  /* border: 1px solid rgb(149, 227, 101); */
+  border: 1px solid black;
   position: relative;
 }
 
@@ -94,7 +104,8 @@ hr{
 }
 
 .day:hover {
-  background-color: grey;
+  /* background-color: grey; */
+  background-color: rgb(234, 234, 234);
   border-radius: 5px;
 }
 

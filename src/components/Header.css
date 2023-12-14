@@ -1,41 +1,78 @@
 /* Header.css */
 .header {
-    background-color: rgb(149,227,101);
-    color: white;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 2px 4px rgb(51, 152, 219, 0.1);
-    
-  }
-  
-  .header h1 {
-    margin-left: 10px;
-    color: whitesmoke
-  }
+  background-color: rgb(149, 227, 101);
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(51, 152, 219, 0.1);
+}
 
-  .header p {
-    font-size: 25px;
-  }
-  
-  .user-button{
-    cursor: pointer;
-    font-size: 30px;
-    background-color: transparent;
-    border: none;
-    color: white;
-  }
+.header h1 {
+  margin-left: 10px;
+  color: rgb(49, 49, 49);
+}
 
-  .header-logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
+.header p {
+  font-size: 25px;
+  color: rgb(49, 49, 49);
+}
 
+.user-dropdown {
+  position: relative;
+}
 
-  
-  /* Add additional styling for other header elements/buttons */
-  
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.logout {
+  color: red;
+}
+
+.header-buttons{
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+}
+
+.user-button {
+  cursor: pointer;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: rgb(49, 49, 49);
+}
+
+.search-button {
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: rgb(49, 49, 49);
+}
+
+.header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+/* Add additional styling for other header elements/buttons */

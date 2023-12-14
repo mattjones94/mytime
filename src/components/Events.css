@@ -14,6 +14,23 @@
   .events-list h2 {
     margin: 10px;
   }
+
+  .selected-date-weekday{
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .selected-date-date{
+    font-weight: 300;
+  }
+
+.date-and-weekday{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: center;
+  margin: 20px;
+}
   
   .events-list ul {
     list-style: none;
@@ -26,6 +43,8 @@
 
   .default-events-list{
     margin: 10px;
+    display: flex;
+    justify-content: center;
   }
 
 

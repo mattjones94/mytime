@@ -14,9 +14,24 @@ const Events = ({ selectedDate, eventsData }) => {
       event.date.getDate() === selectedDate.getDate()
   );
 
+  // Get the weekday and month with day of the month
+  const weekday = selectedDate
+    ? new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(selectedDate)
+    : "";
+  const monthAndDay = selectedDate
+    ? selectedDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      })
+    : "";
+
   return (
     <div className="events-list">
       <h2>My Events</h2>
+      <div className="date-and-weekday">
+        <h3 className="selected-date-weekday">{weekday}</h3>
+        <h3 className="selected-date-date">{monthAndDay}</h3>
+      </div>
       {filteredEvents.length === 0 ? (
         <p className="default-events-list">No events for the selected date</p>
       ) : (
