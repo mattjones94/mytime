@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProximityEventCard.css";
+import ViewModal from "./ViewModal";
+import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 
 const colorNameToHex = (colorName) => {
   const colorMap = {
@@ -34,7 +37,48 @@ const newShade = (hexColor, magnitude) => {
 };
 
 const ProximityEventCard = ({ eventsData }) => {
-  // Sort eventsData based on the time
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isViewModalOpen, setViewModalOpen] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const handleViewClick = (event) => {
+    setSelectedEvent(event);
+    setViewModalOpen(true);
+  };
+
+  const handleEditClick = (event) => {
+    setSelectedEvent(event);
+    setEditModalOpen(true);
+  };
+
+  const handleDeleteClick = (event) => {
+    setSelectedEvent(event);
+    setDeleteModalOpen(true);
+  };
+
+  const handleCloseModals = () => {
+    setViewModalOpen(false);
+    setEditModalOpen(false);
+    setDeleteModalOpen(false);
+  };
+
+  const handleEditSave = (editedEvent) => {
+    // Handle saving the edited event
+    console.log("Saving edited event:", editedEvent);
+
+    // Close the modal
+    handleCloseModals();
+  };
+
+  const handleDeleteConfirm = () => {
+    // Handle confirming the delete
+    console.log("Deleting event:", selectedEvent);
+
+    // Close the modal
+    handleCloseModals();
+  };
+
   const sortedEventsData = [...eventsData].sort(
     (a, b) => a.date.getTime() - b.date.getTime()
   );
@@ -43,7 +87,7 @@ const ProximityEventCard = ({ eventsData }) => {
     <div className="proximity-event-card-container">
       {sortedEventsData.map((data, index) => {
         const baseColor = colorNameToHex(data.color);
-        const modifiedColor = newShade(baseColor, 40); // You can adjust the magnitude as needed
+        const modifiedColor = newShade(baseColor, 40);
 
         return (
           <div
@@ -65,11 +109,41 @@ const ProximityEventCard = ({ eventsData }) => {
             </div>
             <div className="card-footer">
               <p className="date">{data.date.toLocaleDateString()}</p>
-              <button className="view-button">View</button>
+              <button
+                className="view-button"
+                onClick={() => handleViewClick(data)}
+              >
+                View
+              </button>
             </div>
           </div>
         );
       })}
+
+      {isViewModalOpen && (
+        <ViewModal
+          event={selectedEvent}
+          onEdit={() => handleEditClick(selectedEvent)}
+          onDelete={() => handleDeleteClick(selectedEvent)}
+          onClose={handleCloseModals}
+        />
+      )}
+
+      {isEditModalOpen && (
+        <EditModal
+          event={selectedEvent}
+          onSave={handleEditSave}
+          onClose={handleCloseModals}
+        />
+      )}
+
+      {isDeleteModalOpen && (
+        <DeleteModal
+          event={selectedEvent}
+          onDelete={handleDeleteConfirm}
+          onClose={handleCloseModals}
+        />
+      )}
     </div>
   );
 };

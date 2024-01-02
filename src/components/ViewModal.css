@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 25;
 }
 
 .view-modal {
@@ -20,6 +21,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   position: relative; /* Added position relative */
+  z-index: 50;
 }
 
 .view-modal .close-button {

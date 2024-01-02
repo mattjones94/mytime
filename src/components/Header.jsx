@@ -1,44 +1,35 @@
 // Header.js
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./Header.css";
+import MyTime from "../assets/MyTime.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
+import Search from "./Search"; // Import the Search component
 
-const Header = () => {
+const Header = ({ eventsData }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isSearchModalOpen, setSearchModalOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setDropdownOpen(false);
-    }
+  const toggleSearchModal = () => {
+    setSearchModalOpen(!isSearchModalOpen);
   };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="header">
       <div className="header-logo">
         <p className="header-image">
-          <FontAwesomeIcon icon={faClock} />
+          <img className="header-image-picture" src={MyTime} alt="MyTimeLogo" />
         </p>
         <h1>MyTime</h1>
       </div>
 
       <div className="header-buttons">
-        <button className="search-button">
+        <button className="search-button" onClick={toggleSearchModal}>
           <FontAwesomeIcon icon={faSearch} />
         </button>
 
@@ -55,6 +46,10 @@ const Header = () => {
           )}
         </div>
       </div>
+
+      {isSearchModalOpen && (
+        <Search eventsData={eventsData} onClose={toggleSearchModal} />
+      )}
 
       {/* Add any other header content or buttons as needed */}
     </div>

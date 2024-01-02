@@ -34,9 +34,7 @@
 }
 
 hr{
-  /* border-top: 8px solid whitesmoke; */
-  /* color: whitesmoke; */
-  color: black;
+  border-bottom: 1px solid #000000; 
   border-radius: 5px;
   width: 60%;
   margin: auto;

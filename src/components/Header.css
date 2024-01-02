@@ -20,6 +20,10 @@
   color: rgb(49, 49, 49);
 }
 
+.header-image-picture{
+  height: 25px;
+}
+
 .user-dropdown {
   position: relative;
 }
@@ -31,14 +35,23 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  /* padding: 10px; */
   z-index: 1;
 }
 
 .menu-item {
   cursor: pointer;
-  padding: 8px 0;
-  margin: 0;
+  padding: 5px ;
+  margin: 2px;
+}
+
+.menu-item:hover{
+  background-color: grey;
+  color: white;
+  border-radius: 12px;
+  margin: auto;
+  padding: 5px;
+  margin: 2px;
 }
 
 .logout {
