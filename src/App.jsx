@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header eventsData={eventsData} />
       <div className="master-container">
         <div className="proximity-calendar-container">
           <p className="upcoming-events-title">Upcoming Events:</p>

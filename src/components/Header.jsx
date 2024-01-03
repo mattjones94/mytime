@@ -4,7 +4,7 @@ import "./Header.css";
 import MyTime from "../assets/MyTime.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
-import Search from "./Search"; // Import the Search component
+import Search from "./Search";
 
 const Header = ({ eventsData }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -29,9 +29,15 @@ const Header = ({ eventsData }) => {
       </div>
 
       <div className="header-buttons">
-        <button className="search-button" onClick={toggleSearchModal}>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
+        <div>
+          <button className="search-button" onClick={toggleSearchModal}>
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+
+          {isSearchModalOpen && eventsData && (
+            <Search eventsData={eventsData} onClose={toggleSearchModal} />
+          )}
+        </div>
 
         <div className="user-dropdown" ref={dropdownRef}>
           <button className="user-button" onClick={toggleDropdown}>
@@ -46,12 +52,6 @@ const Header = ({ eventsData }) => {
           )}
         </div>
       </div>
-
-      {isSearchModalOpen && (
-        <Search eventsData={eventsData} onClose={toggleSearchModal} />
-      )}
-
-      {/* Add any other header content or buttons as needed */}
     </div>
   );
 };

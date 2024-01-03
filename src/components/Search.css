@@ -1,0 +1,125 @@
+/* Search.css */
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 29;
+}
+
+.search-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-modal .search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  /* padding: 10px; */
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.search-modal .search-bar input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid black;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+/* .search-modal .search-bar button {
+  width: 30%;
+  padding: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+} */
+
+.search-modal .search-results {
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-modal .search-results:hover {
+  cursor: pointer;
+
+}
+
+.search-modal .search-result-item {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+}
+
+.search-modal .search-result-item:hover {
+  border-radius: 5px;
+  background-color: #3498db;
+
+}
+
+.search-modal .search-result-item p {
+  padding-bottom: 10px;
+}
+
+.search-modal .type-filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.search-modal .type-filters button {
+  margin: 0 5px;
+  padding: 8px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-modal .type-filters button.active {
+  background-color: #2980b9;
+}
+
+.separator {
+  height: 1px;
+  background-color: #ddd;
+  margin: 10px 0; 
+  width: 70%; 
+}
+
+.calendar-icon {
+  margin-right: 8px; 
+}
