@@ -29,7 +29,7 @@ const DeleteModal = ({ event, onDelete, onClose }) => {
       {/* First Modal: Delete Confirmation */}
       <div className="delete-modal-overlay">
         <div className="delete-modal">
-          <h2>Delete Event</h2>
+          <h2 className="delete-modal-header">Delete Event</h2>
           <p>Are you sure you want to delete this event?</p>
           <div className="delete-modal-buttons">
             <button onClick={handleDelete}>Yes</button>
@@ -42,7 +42,7 @@ const DeleteModal = ({ event, onDelete, onClose }) => {
       {isConfirmationModalVisible && (
         <div className="delete-modal-overlay">
           <div className="delete-modal">
-            <h2>Confirm Deletion</h2>
+            <h2 className="delete-modal-header">Confirm Deletion</h2>
             <p>Are you really, really sure?</p>
             <div className="delete-modal-buttons">
               <button onClick={handleFinalDelete}>Yes</button>

@@ -61,9 +61,17 @@
   border-radius: 5px;
 } */
 
+/* Search.css */
 .search-modal .search-results {
   width: 100%;
   max-width: 400px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.search-modal .search-results.visible {
+  max-height: 200px; /* Set a value based on the maximum expected height of your results */
 }
 
 .search-modal .search-results:hover {
@@ -78,20 +86,30 @@
   border-radius: 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+  transition: background-color 0.3s, color 0.3s;
+  transition: color 0.3s, color 0.3s; 
 }
 
 .search-modal .search-result-item:hover {
   border-radius: 5px;
   background-color: #3498db;
-
+  color: white;
 }
 
-.search-modal .search-result-item p {
+.search-modal .search-result-item .search-result-item-title {
   padding-bottom: 10px;
+  /* Center the title */
+  flex-grow: 1;
+  text-align: center;
+  transition: text-decoration 0.5s; 
 }
+
+.search-modal .search-result-item .search-result-item-title:hover {
+  text-decoration: underline;
+  color: white;
+}
+
 
 .search-modal .type-filters {
   display: flex;
@@ -119,7 +137,12 @@
   margin: 10px 0; 
   width: 70%; 
 }
-
 .calendar-icon {
-  margin-right: 8px; 
+  /* Keep the calendar icon left-aligned */
+  margin-right: 10px;
+  color: white;
+}
+
+.calendar-icon:hover {
+  color: black; 
 }

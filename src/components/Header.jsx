@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import Search from "./Search";
 
-const Header = ({ eventsData }) => {
+const Header = ({ eventsData, onCalendarIconClick }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -30,12 +30,18 @@ const Header = ({ eventsData }) => {
 
       <div className="header-buttons">
         <div>
+          {/* Search button */}
           <button className="search-button" onClick={toggleSearchModal}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
 
+          {/* Search modal */}
           {isSearchModalOpen && eventsData && (
-            <Search eventsData={eventsData} onClose={toggleSearchModal} />
+            <Search
+              eventsData={eventsData}
+              onClose={toggleSearchModal}
+              onCalendarIconClick={onCalendarIconClick} // Pass the prop down to Search
+            />
           )}
         </div>
 

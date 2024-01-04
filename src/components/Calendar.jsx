@@ -1,9 +1,12 @@
+// Calendar.js
 import React, { useState, useEffect } from "react";
 import "./Calendar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import Search from "./Search";
 
 const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
   const [date, setDate] = useState(new Date());
@@ -12,6 +15,9 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
     // Highlight the selected date or today's date when the component mounts
     if (!selectedDate) {
       onDayClick(new Date());
+    } else {
+      // Handle logic for the selected date
+      console.log("Selected Date:", selectedDate);
     }
   }, [onDayClick, selectedDate]);
 
@@ -124,8 +130,11 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
     <div className="calendar-container">
       <div className="calendar">
         <div className="calendar-header">
-          <button style={{ borderBottomLeftRadius: 10,borderTopLeftRadius: 10 }} className="month-buttons" onClick={handlePrevMonthClick}>
-            {/* &lt; */}
+          <button
+            style={{ borderBottomLeftRadius: 10, borderTopLeftRadius: 10 }}
+            className="month-buttons"
+            onClick={handlePrevMonthClick}
+          >
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
           <h2>
@@ -134,8 +143,11 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
               year: "numeric",
             })}
           </h2>
-          <button style={{ borderBottomRightRadius: 10,borderTopRightRadius: 10 }} className="month-buttons" onClick={handleNextMonthClick}>
-            {/* &gt; */}
+          <button
+            style={{ borderBottomRightRadius: 10, borderTopRightRadius: 10 }}
+            className="month-buttons"
+            onClick={handleNextMonthClick}
+          >
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
         </div>

@@ -27,7 +27,7 @@ const EditModal = ({ event, onClose }) => {
   return (
     <div className="edit-modal-overlay">
       <div className="edit-modal">
-        <h2>Edit Event</h2>
+        <h2 className="edit-modal-event-header">Edit Event</h2>
         <label>
           Title:
           <input

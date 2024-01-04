@@ -11,7 +11,7 @@ const ViewModal = ({ event, onEdit, onDelete, onClose }) => {
         <button className="close-button" onClick={onClose}>
           X
         </button>
-        <h2>{event.title}</h2>
+        <h2 className="view-modal-title">{event.title}</h2>
         <p>Type: {event.type}</p>
         <p>Description: {event.description}</p>
         <p>Date: {event.date.toLocaleString()}</p>
