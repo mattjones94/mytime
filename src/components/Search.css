@@ -10,7 +10,10 @@
   justify-content: center;
   align-items: center;
   z-index: 29;
+  
 }
+
+
 
 .search-modal {
   background: white;
@@ -24,7 +27,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  top: 25%;
 }
+
+
 
 .search-modal .search-bar {
   display: flex;

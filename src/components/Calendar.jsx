@@ -17,7 +17,7 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
       onDayClick(new Date());
     } else {
       // Handle logic for the selected date
-      console.log("Selected Date:", selectedDate);
+      setDate(selectedDate);
     }
   }, [onDayClick, selectedDate]);
 

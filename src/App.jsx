@@ -19,6 +19,9 @@ function App() {
   const handleCalendarIconClick = (date) => {
     // Update the selected date state
     setSelectedDate(date);
+
+    const month = date.getMonth();
+    const year = date.getFullYear();
   };
 
   return (

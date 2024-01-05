@@ -7,6 +7,12 @@ const eventsData = [
     date: new Date(2024, 0, 12, 10, 30), // Updated with time (10:30 AM)
   },
   {
+    title: "Finals",
+    type: "Personal",
+    color: "orange",
+    date: new Date(2024, 6, 12, 16, 30), // Updated with time (10:30 AM)
+  },
+  {
     title: "Walk Dog",
     type: "Personal",
     color: "purple",
