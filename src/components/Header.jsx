@@ -3,12 +3,23 @@ import React, { useState, useRef } from "react";
 import "./Header.css";
 import MyTime from "../assets/MyTime.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faSearch,
+  faCog,
+} from "@fortawesome/free-solid-svg-icons";
 import Search from "./Search";
+import SettingsModal from "./SettingsModal";
 
-const Header = ({ eventsData, onCalendarIconClick }) => {
+const Header = ({
+  eventsData,
+  onCalendarIconClick,
+  onToggleDarkMode,
+  isDarkMode,
+}) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isSearchModalOpen, setSearchModalOpen] = useState(false);
+  const [isSettingsModalOpen, setSettingsModalOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
@@ -17,6 +28,12 @@ const Header = ({ eventsData, onCalendarIconClick }) => {
 
   const toggleSearchModal = () => {
     setSearchModalOpen(!isSearchModalOpen);
+    setDropdownOpen(false);
+  };
+
+  const toggleSettingsModal = () => {
+    setSettingsModalOpen(!isSettingsModalOpen);
+    setDropdownOpen(false);
   };
 
   return (
@@ -30,17 +47,15 @@ const Header = ({ eventsData, onCalendarIconClick }) => {
 
       <div className="header-buttons">
         <div>
-          {/* Search button */}
           <button className="search-button" onClick={toggleSearchModal}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
 
-          {/* Search modal */}
           {isSearchModalOpen && eventsData && (
             <Search
               eventsData={eventsData}
               onClose={toggleSearchModal}
-              onCalendarIconClick={onCalendarIconClick} // Pass the prop down to Search
+              onCalendarIconClick={onCalendarIconClick}
             />
           )}
         </div>
@@ -52,12 +67,23 @@ const Header = ({ eventsData, onCalendarIconClick }) => {
 
           {isDropdownOpen && (
             <div className="dropdown-menu">
-              <p className="menu-item">Settings</p>
+              <p className="menu-item" onClick={toggleSettingsModal}>
+                <FontAwesomeIcon icon={faCog} />
+                Settings
+              </p>
               <p className="menu-item logout">Logout</p>
             </div>
           )}
         </div>
       </div>
+
+      {isSettingsModalOpen && (
+        <SettingsModal
+          onClose={toggleSettingsModal}
+          onToggleDarkMode={onToggleDarkMode}
+          isDarkMode={isDarkMode}
+        />
+      )}
     </div>
   );
 };

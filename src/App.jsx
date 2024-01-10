@@ -7,28 +7,34 @@ import Header from "./components/Header";
 import AddEventButton from "./components/AddEvent";
 import eventsData from "./data/eventsData";
 import ProximityEventCard from "./components/ProximityEventCard";
-import Search from "./components/Search";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false); // New state for dark mode
 
   const handleDayClick = (newSelectedDate) => {
     setSelectedDate(newSelectedDate);
   };
 
   const handleCalendarIconClick = (date) => {
-    // Update the selected date state
     setSelectedDate(date);
-
     const month = date.getMonth();
     const year = date.getFullYear();
   };
 
+  const onToggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="App">
+    <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <Header
         eventsData={eventsData}
         onCalendarIconClick={handleCalendarIconClick}
+        onToggleDarkMode={onToggleDarkMode}
+        isDarkMode={isDarkMode} // Pass the dark mode state
       />
       <div className="master-container">
         <div className="proximity-calendar-container">
@@ -40,6 +46,12 @@ function App() {
             eventsData={eventsData}
             onCalendarIconClick={handleCalendarIconClick}
           />
+          <div className="light-mode-sun">
+            <FontAwesomeIcon
+              icon={isDarkMode ? faMoon : faSun}
+              style={{ color: isDarkMode ? "1E3050" : "#fcff5c" }}
+            />
+          </div>
         </div>
         <div className="master-events-container">
           <Events selectedDate={selectedDate} eventsData={eventsData} />

@@ -1,6 +1,7 @@
 /* Header.css */
 .header {
-  background-color: rgb(149, 227, 101);
+  /* background-color: rgb(149, 227, 101); */
+  background-color: rgb(244, 244, 244);
   color: white;
   padding: 10px;
   display: flex;
@@ -41,9 +42,16 @@
 
 .menu-item {
   cursor: pointer;
-  padding: 5px ;
+  padding: 5px;
   margin: 2px;
+  display: flex;
+  flex-direction: row;
 }
+
+.dropdown-menu p {
+  font-size: 20px;
+}
+
 
 .menu-item:hover{
   background-color: grey;
