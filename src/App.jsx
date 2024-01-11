@@ -46,12 +46,27 @@ function App() {
             eventsData={eventsData}
             onCalendarIconClick={handleCalendarIconClick}
           />
-          <div className="light-mode-sun">
-            <FontAwesomeIcon
-              icon={isDarkMode ? faMoon : faSun}
-              style={{ color: isDarkMode ? "1E3050" : "#fcff5c" }}
-            />
-          </div>
+          {isDarkMode ? (
+            <div className="dark-mode-moon">
+              <FontAwesomeIcon
+                icon={faMoon}
+                style={{ color: "#1E3050", transform: "translateY(0)" }}
+              />
+            </div>
+          ) : (
+            <div className="light-mode-sun">
+              <FontAwesomeIcon
+                icon={faSun}
+                style={{ color: "#fcff5c", transform: "translateY(0)" }}
+              />
+            </div>
+          )}
+          {/*Moon color- 1E3050 
+            Sun color - fcff5c
+            Light mode background color - FFF9E5,
+            Dark mode background color -  2E3060
+            
+          */}
         </div>
         <div className="master-events-container">
           <Events selectedDate={selectedDate} eventsData={eventsData} />

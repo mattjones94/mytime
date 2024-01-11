@@ -42,11 +42,44 @@
   padding-top: 20px;
 }
 
-.light-mode-sun {
+.dark-mode .master-container {
+  background: linear-gradient(45deg, #7879a1, #0a1426);
+}
+
+.light-mode .master-container {
+  /* background-color: rgb(244, 244, 244); */
+  background: linear-gradient(45deg, #ffffe1, #f5ff99);
+}
+
+
+.light-mode-sun,
+.dark-mode-moon {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  font-size: 36px;
+  font-size: 24px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.moon {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sun {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.dark-mode .moon {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.dark-mode .sun {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 @media only screen and (max-width: 705px) {
