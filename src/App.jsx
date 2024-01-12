@@ -65,7 +65,6 @@ function App() {
             Sun color - fcff5c
             Light mode background color - FFF9E5,
             Dark mode background color -  2E3060
-            
           */}
         </div>
         <div className="master-events-container">

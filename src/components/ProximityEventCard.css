@@ -34,13 +34,13 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
-    background-color: green;
+    background-color: #4667ba;
   }
 }
 
 .proximity-event-card-container:hover{
   &::-webkit-scrollbar-thumb {
-    background-color: green;
+    background-color: #4667ba;
   }
 
 }

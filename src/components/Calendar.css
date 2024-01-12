@@ -10,16 +10,62 @@
   
 }
 
-.calendar {
+/* .calendar {
   width: 60%;
   height: 90%;
   font-family: 'Arial', sans-serif;
-  /* background-color: black; */
   background-color: rgb(245, 245, 245, 0.7);
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   border: 1px solid #3498db;
   background-color: rgb(255, 255, 255);
+} */
+
+.calendar {
+  width: 60%;
+  height: 90%;
+  font-family: 'Arial', sans-serif;
+  background-color: rgba(255, 255, 255, 0.65); 
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3498db;
+}
+
+.dark-mode .calendar {
+  background-color: rgba(255, 255, 255, 0.65); 
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 0 5px rgba(223, 218, 248, 0.2);
+  border: 1px solid #5e5b7033;
+}
+
+.light-mode .calendar {
+  background-color: rgba(255, 255, 255, 0.65); 
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #4667ba;
+}
+
+
+
+.dark-mode .calendar-header h2{
+  color: rgb(255, 255, 254);
+}
+
+.dark-mode .days{
+  color: rgb(255, 255, 254);
+}
+
+
+.light-mode  .calendar-header h2 {
+  color: rgb(49, 49, 49);
+}
+
+.light-mode .days {
+  color: rgb(49, 49, 49);
 }
 
 .calendar-header {
@@ -35,12 +81,23 @@
   /* border-bottom: 1px solid whitesmoke; */
 }
 
+
+
+
 hr{
   border-bottom: 1px solid #000000; 
   border-radius: 5px;
   width: 60%;
   margin: auto;
 
+}
+
+.dark-mode hr{
+  border-bottom: 1px solid rgb(255, 255, 254);
+}
+
+.light-mode hr{
+  border-bottom: 1px solid rgb(49, 49, 49);
 }
 
 .month-buttons {
@@ -59,10 +116,27 @@ hr{
   border: 1px solid black;
   cursor: pointer;
   font-size: 16px;
-  /* color: whitesmoke; */
   color: black;
 
 }
+
+
+.dark-mode .month-buttons {
+  color: rgb(255, 255, 254);
+}
+
+.dark-mode .month-buttons:active {
+  border: 1px solid rgb(255, 255, 254);
+}
+
+.light-mode .month-buttons {
+  color: rgb(49, 49, 49);
+}
+
+.light-mode .month-buttons:active {
+  border: 1px solid rgb(49, 49, 49);
+}
+
 
 .days {
   display: grid;
@@ -84,6 +158,10 @@ hr{
   font-weight: bold;
 }
 
+.dark-mode .day{
+  border: 1px solid rgb(255, 255, 254);
+}
+
 .day {
   display: flex;
   justify-content: center;
@@ -95,6 +173,12 @@ hr{
   /* border: 1px solid rgb(149, 227, 101); */
   border: 1px solid black;
   position: relative;
+}
+
+.dark-mode .faded-day {
+  color: #999;
+  border: 1px solid rgb(153, 153, 153, .3);
+  cursor: pointer;
 }
 
 .faded-day {
@@ -115,8 +199,15 @@ hr{
   border: 1px solid #fff;
 }
 
+.dark-mode .selected {
+  background-color: #1B2338;
+}
+
+.light-mode .selected {
+  background-color: #4667ba;
+}
+
 .selected {
-  background-color: #3498db;
   color: #fff;
   font-weight: bold;
   border-radius: 5px;

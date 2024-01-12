@@ -11,9 +11,6 @@
 .master-container {
   width: 100%;
   height: 100%;
-  /* background-color: rgb(149, 227, 101); */
-  background-color: rgb(244, 244, 244);
-  /* background-color: whitesmoke; */
   display: flex;
   flex-direction: row;
    height: calc(100% - 57px);
@@ -21,18 +18,22 @@
 
 .proximity-calendar-container{
   width: 75%;
-  /* background-color: aliceblue; */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-
 }
 
 .master-events-container{
   width: 25%;
   padding: 10px;
+}
 
-  /* background-color: aliceblue; */
+.dark-mode .upcoming-events-title{
+  color: rgb(255, 255, 254);
+}
+
+.light-mode .upcoming-events-title{
+  color: rgb(49, 49, 49);
 }
 
 .upcoming-events-title{
@@ -47,7 +48,6 @@
 }
 
 .light-mode .master-container {
-  /* background-color: rgb(244, 244, 244); */
   background: linear-gradient(45deg, #ffffe1, #f5ff99);
 }
 

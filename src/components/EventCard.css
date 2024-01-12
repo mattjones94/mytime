@@ -50,6 +50,7 @@
   }
 
   .menu-options {
+    color: rgb(49, 49, 49);
     position: absolute;
     bottom: 50%; /* Position above the card */
     right: 15px;
@@ -70,7 +71,7 @@
 
   .menu-options-item:hover{
     border-radius: 8px;
-    background-color: rgb(149, 227, 101);
+    background-color: #4667ba;
     color: white;
 
   }

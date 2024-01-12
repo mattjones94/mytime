@@ -1,7 +1,5 @@
 /* Header.css */
 .header {
-  /* background-color: rgb(149, 227, 101); */
-  /* background-color: rgb(244, 244, 244); */
   color: white;
   padding: 10px;
   display: flex;
@@ -11,9 +9,25 @@
   box-shadow: 0px 2px 4px rgba(51, 152, 219, 0.1);
 }
 
+.dark-mode .header {
+  background: linear-gradient( 90deg, #55597A, #0C1628);
+}
+
+.light-mode .header {
+  background: linear-gradient(90deg, #FCFFCB, #F5FF9B);
+}
+
+
+.dark-mode .header h1 {
+  color: rgb(255, 254, 254);
+}
+
+.light-mode .header h1 {
+  color: rgb(49, 49, 49);
+}
+
 .header h1 {
   margin-left: 10px;
-  color: rgb(49, 49, 49);
 }
 
 .header p {
@@ -36,7 +50,6 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* padding: 10px; */
   z-index: 1;
 }
 
@@ -72,6 +85,15 @@
   margin-right: 10px;
 }
 
+
+.dark-mode .user-button {
+  color: rgb(255, 254, 254);
+}
+
+.light-mode .user-button {
+  color: rgb(49, 49, 49);
+}
+
 .user-button {
   cursor: pointer;
   font-size: 30px;
@@ -79,6 +101,17 @@
   border: none;
   color: rgb(49, 49, 49);
 }
+
+
+.dark-mode .search-button {
+  color: rgb(255, 254, 254);
+}
+
+.light-mode .search-button {
+  color: rgb(49, 49, 49);
+}
+
+
 
 .search-button {
   cursor: pointer;
@@ -96,4 +129,3 @@
   flex-direction: row;
 }
 
-/* Add additional styling for other header elements/buttons */
