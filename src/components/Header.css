@@ -67,7 +67,7 @@
 
 
 .menu-item:hover{
-  background-color: grey;
+  background-color: #4667ba;
   color: white;
   border-radius: 12px;
   margin: auto;
@@ -81,6 +81,7 @@
 
 .header-buttons{
   display: flex;
+  align-items: center;
   flex-direction: row;
   margin-right: 10px;
 }
@@ -120,6 +121,8 @@
   background-color: transparent;
   border: none;
   color: rgb(49, 49, 49);
+  display: flex;
+  justify-content: center;
 }
 
 .header-logo {

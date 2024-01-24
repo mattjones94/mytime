@@ -29,6 +29,11 @@
     display: block;
     margin-bottom: 10px;
   }
+
+  .edit-modal select {
+    display: block;
+    margin-bottom: 10px;
+  }
   
   .edit-modal input {
     width: 100%;

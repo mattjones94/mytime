@@ -12,9 +12,19 @@ const ViewModal = ({ event, onEdit, onDelete, onClose }) => {
           X
         </button>
         <h2 className="view-modal-title">{event.title}</h2>
-        <p>Type: {event.type}</p>
+        <p>Type: {event.category}</p>
         <p>Description: {event.description}</p>
-        <p>Date: {event.date.toLocaleString()}</p>
+        <p>
+          Date:{" "}
+          {event.date.toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          })}
+        </p>
 
         <div className="view-modal-buttons">
           <button onClick={() => onEdit(event)}>Edit</button>

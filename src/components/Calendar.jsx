@@ -103,9 +103,20 @@ const Calendar = ({ selectedDate, onDayClick, eventsData }) => {
     return days;
   };
 
+  // const handleDayClick = (day) => {
+  //   const newSelectedDate = new Date(date.getFullYear(), date.getMonth(), day);
+  //   onDayClick(newSelectedDate);
+  // };
+
   const handleDayClick = (day) => {
-    const newSelectedDate = new Date(date.getFullYear(), date.getMonth(), day);
-    onDayClick(newSelectedDate);
+    if (selectedDate) {
+      const newSelectedDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        day
+      );
+      onDayClick(newSelectedDate);
+    }
   };
 
   const handlePrevMonthDayClick = (day) => {

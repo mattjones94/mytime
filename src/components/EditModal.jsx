@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import "./EditModal.css";
 
-const EditModal = ({ event, onClose }) => {
+const EditModal = ({ event, onClose, categories }) => {
   const [editedEvent, setEditedEvent] = useState({
     title: event.title,
-    type: event.type,
+    category: event.category || (categories.length > 0 ? categories[0] : ""),
   });
 
   const handleInputChange = (e) => {
@@ -38,13 +38,18 @@ const EditModal = ({ event, onClose }) => {
           />
         </label>
         <label>
-          Type:
-          <input
-            type="text"
-            name="type"
-            value={editedEvent.type}
+          Category:
+          <select
+            name="category"
+            value={editedEvent.category}
             onChange={handleInputChange}
-          />
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
         </label>
         <div className="edit-modal-buttons">
           <button onClick={handleSaveChanges}>Save Changes</button>

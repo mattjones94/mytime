@@ -9,10 +9,13 @@ import eventsData from "./data/eventsData";
 import ProximityEventCard from "./components/ProximityEventCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { getEvents, addEvent } from "./data/dataService";
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false); // New state for dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [originalEvents, setOriginalEvents] = useState(eventsData);
+  const [newlyAddedEvents, setNewlyAddedEvents] = useState([]);
 
   const handleDayClick = (newSelectedDate) => {
     setSelectedDate(newSelectedDate);
@@ -22,28 +25,36 @@ function App() {
     setSelectedDate(date);
     const month = date.getMonth();
     const year = date.getFullYear();
+    // Add any additional logic related to calendar icon click
   };
 
   const onToggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const onAddEvent = (newEvent) => {
+    setNewlyAddedEvents((prevEvents) => [...prevEvents, newEvent]);
+    addEvent(newEvent);
+  };
+
+  const combinedEvents = [...originalEvents, ...newlyAddedEvents];
+
   return (
     <div className={`App ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <Header
-        eventsData={eventsData}
+        eventsData={combinedEvents} // Use combinedEvents instead of eventsData
         onCalendarIconClick={handleCalendarIconClick}
         onToggleDarkMode={onToggleDarkMode}
-        isDarkMode={isDarkMode} // Pass the dark mode state
+        isDarkMode={isDarkMode}
       />
       <div className="master-container">
         <div className="proximity-calendar-container">
           <p className="upcoming-events-title">Upcoming Events:</p>
-          <ProximityEventCard eventsData={eventsData} />
+          <ProximityEventCard eventsData={combinedEvents} />
           <Calendar
             selectedDate={selectedDate}
             onDayClick={handleDayClick}
-            eventsData={eventsData}
+            eventsData={combinedEvents}
             onCalendarIconClick={handleCalendarIconClick}
           />
           {isDarkMode ? (
@@ -61,15 +72,10 @@ function App() {
               />
             </div>
           )}
-          {/*Moon color- 1E3050 
-            Sun color - fcff5c
-            Light mode background color - FFF9E5,
-            Dark mode background color -  2E3060
-          */}
         </div>
         <div className="master-events-container">
-          <Events selectedDate={selectedDate} eventsData={eventsData} />
-          <AddEventButton />
+          <Events selectedDate={selectedDate} events={combinedEvents} />
+          <AddEventButton onAddEvent={onAddEvent} />
         </div>
       </div>
     </div>

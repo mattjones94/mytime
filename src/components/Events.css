@@ -23,8 +23,9 @@
     border-radius: 12px;
     border: 1px solid #3498db;
   }
+  
 
-  .dark-mode .events-list h2{
+  .dark-mode .events-list .events-list-title{
     color: rgb(255, 255, 254);
   }
 

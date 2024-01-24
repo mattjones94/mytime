@@ -5,8 +5,10 @@ import MyTime from "../assets/MyTime.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
+  faUser,
   faSearch,
   faCog,
+  faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 import Search from "./Search";
 import SettingsModal from "./SettingsModal";
@@ -68,10 +70,17 @@ const Header = ({
           {isDropdownOpen && (
             <div className="dropdown-menu">
               <p className="menu-item" onClick={toggleSettingsModal}>
+                <FontAwesomeIcon icon={faUser} />
+                Demo
+              </p>
+              <p className="menu-item" onClick={toggleSettingsModal}>
                 <FontAwesomeIcon icon={faCog} />
                 Settings
               </p>
-              <p className="menu-item logout">Logout</p>
+              <p className="menu-item logout">
+                <FontAwesomeIcon icon={faSignOut} />
+                Logout
+              </p>
             </div>
           )}
         </div>

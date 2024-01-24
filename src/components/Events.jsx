@@ -3,16 +3,19 @@ import React from "react";
 import "./Events.css";
 import EventCard from "./EventCard";
 
-const Events = ({ selectedDate, eventsData }) => {
-  const filteredEvents = eventsData.filter(
-    (event) =>
-      event.date &&
+const Events = ({ selectedDate, events }) => {
+  const filteredEvents = events.filter((event) => {
+    const eventDate = new Date(event.date);
+
+    return (
+      eventDate &&
       selectedDate &&
       selectedDate instanceof Date &&
-      event.date.getFullYear() === selectedDate.getFullYear() &&
-      event.date.getMonth() === selectedDate.getMonth() &&
-      event.date.getDate() === selectedDate.getDate()
-  );
+      eventDate.getFullYear() === selectedDate.getFullYear() &&
+      eventDate.getMonth() === selectedDate.getMonth() &&
+      eventDate.getDate() === selectedDate.getDate()
+    );
+  });
 
   // Get the weekday and month with day of the month
   const weekday = selectedDate
@@ -27,7 +30,7 @@ const Events = ({ selectedDate, eventsData }) => {
 
   return (
     <div className="events-list">
-      <h2>My Events</h2>
+      <h2 className="events-list-title">My Events</h2>
       <div className="date-and-weekday">
         <h3 className="selected-date-weekday">{weekday}</h3>
         <h3 className="selected-date-date">{monthAndDay}</h3>

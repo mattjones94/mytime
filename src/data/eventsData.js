@@ -2,45 +2,38 @@
 const eventsData = [
   {
     title: "Dentist",
-    type: "Personal",
-    color: "orange",
-    date: new Date(2024, 0, 12, 10, 30), // Updated with time (10:30 AM)
+    category: "medical",
+    date: new Date(2024, 0, 12, 10, 30),
   },
   {
     title: "Finals",
-    type: "Personal",
-    color: "orange",
-    date: new Date(2024, 6, 12, 16, 30), // Updated with time (10:30 AM)
+    category: "personal",
+    date: new Date(2024, 6, 12, 16, 30),
   },
   {
     title: "Walk Dog",
-    type: "Personal",
-    color: "purple",
-    date: new Date(2024, 0, 12, 11, 30), // Updated with time (10:30 AM)
+    category: "personal",
+    date: new Date(2024, 0, 12, 11, 30),
   },
   {
     title: "Doctor",
-    type: "Medical",
-    color: "orange",
-    date: new Date(2024, 0, 13, 14, 15), // Updated with time (2:15 PM)
+    category: "medical",
+    date: new Date(2024, 0, 13, 14, 15),
   },
   {
     title: "Birthday Party",
-    type: "Social",
-    color: "blue",
-    date: new Date(2024, 0, 23, 18, 0), // Updated with time (6:00 PM)
+    category: "social",
+    date: new Date(2024, 0, 23, 18, 0),
   },
   {
     title: "Date",
-    type: "Social",
-    color: "purple",
-    date: new Date(2024, 0, 23, 19, 30), // Updated with time (7:30 PM)
+    category: "social",
+    date: new Date(2024, 0, 23, 19, 30),
   },
   {
     title: "Pay Bills",
-    type: "Financial",
-    color: "orange",
-    date: new Date(2024, 0, 19, 12, 0), // Updated with time (12:00 PM)
+    category: "financial",
+    date: new Date(2024, 0, 19, 12, 0),
   },
 ];
 
