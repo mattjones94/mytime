@@ -10,29 +10,31 @@ import DeleteModal from "./DeleteModal"; // Import your DeleteModal component
 const Search = ({ eventsData, onClose, onCalendarIconClick }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [filterType, setFilterType] = useState(null);
+  const [filtercategory, setFiltercategory] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isViewModalOpen, setViewModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   useEffect(() => {
-    // Filter events based on the search term and selected type
+    // Filter events based on the search term and selected category
     const filtered = eventsData.filter(
       (event) =>
         event.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (filterType ? event.type === filterType : true)
+        (filtercategory ? event.category === filtercategory : true)
     );
     setFilteredEvents(filtered);
-  }, [searchTerm, filterType, eventsData]);
+  }, [searchTerm, filtercategory, eventsData]);
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleTypeFilter = (type) => {
-    // Toggle active state if the same type is clicked again
-    setFilterType((prevFilter) => (prevFilter === type ? null : type));
+  const handlecategoryFilter = (category) => {
+    // Toggle active state if the same category is clicked again
+    setFiltercategory((prevFilter) =>
+      prevFilter === category ? null : category
+    );
   };
 
   const handleViewDetails = (event) => {
@@ -86,22 +88,22 @@ const Search = ({ eventsData, onClose, onCalendarIconClick }) => {
       <div className="search-modal" onClick={(e) => e.stopPropagation()}>
         <div className="search-bar">
           <input
-            type="text"
+            category="text"
             placeholder="Search events..."
             value={searchTerm}
             onChange={handleInputChange}
           />
         </div>
 
-        <div className="type-filters">
-          {Array.from(new Set(eventsData.map((event) => event.type))).map(
-            (type) => (
+        <div className="category-filters">
+          {Array.from(new Set(eventsData.map((event) => event.category))).map(
+            (category) => (
               <button
-                key={type}
-                onClick={() => handleTypeFilter(type)}
-                className={filterType === type ? "active" : ""}
+                key={category}
+                onClick={() => handlecategoryFilter(category)}
+                className={filtercategory === category ? "active" : ""}
               >
-                {type}
+                {category}
               </button>
             )
           )}
@@ -109,7 +111,7 @@ const Search = ({ eventsData, onClose, onCalendarIconClick }) => {
 
         <div
           className={`search-results ${
-            (searchTerm !== "" && filteredEvents.length > 0) || filterType
+            (searchTerm !== "" && filteredEvents.length > 0) || filtercategory
               ? "visible"
               : ""
           }`}

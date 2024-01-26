@@ -9,7 +9,7 @@ import eventsData from "./data/eventsData";
 import ProximityEventCard from "./components/ProximityEventCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { getEvents, addEvent } from "./data/dataService";
+import { addEvent, updateEvent } from "./data/dataService";
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -21,10 +21,23 @@ function App() {
     setSelectedDate(newSelectedDate);
   };
 
+  const handleUpdate = (oldEvent, updatedEvent) => {
+    setOriginalEvents((prevEvents) => {
+      const updatedEvents = prevEvents.map((event) =>
+        event.id === oldEvent.id ? updatedEvent : event
+      );
+      return updatedEvents;
+    });
+    setNewlyAddedEvents((prevEvents) => {
+      const updatedEvents = prevEvents.map((event) =>
+        event.id === oldEvent.id ? updatedEvent : event
+      );
+      return updatedEvents;
+    });
+  };
+
   const handleCalendarIconClick = (date) => {
     setSelectedDate(date);
-    const month = date.getMonth();
-    const year = date.getFullYear();
     // Add any additional logic related to calendar icon click
   };
 
@@ -33,6 +46,15 @@ function App() {
   };
 
   const onAddEvent = (newEvent) => {
+    // Find the maximum existing ID
+    const maxId = Math.max(...originalEvents.map((event) => event.id));
+
+    // Use the maximum ID + 1 as the new ID
+    newEvent.id = maxId + 1;
+
+    // Ensure the new event has a category
+    newEvent.category = newEvent.category || "default";
+
     setNewlyAddedEvents((prevEvents) => [...prevEvents, newEvent]);
     addEvent(newEvent);
   };
@@ -74,7 +96,11 @@ function App() {
           )}
         </div>
         <div className="master-events-container">
-          <Events selectedDate={selectedDate} events={combinedEvents} />
+          <Events
+            selectedDate={selectedDate}
+            events={combinedEvents}
+            onUpdate={handleUpdate}
+          />
           <AddEventButton onAddEvent={onAddEvent} />
         </div>
       </div>

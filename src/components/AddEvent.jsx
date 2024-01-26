@@ -20,7 +20,7 @@ const AddEventButton = ({ onAddEvent }) => {
 
       // Create a new Date object in UTC to avoid time zone issues
       const newEventDate = new Date(
-        Date.UTC(year, month - 1, day + 1, hour, minute)
+        Date.UTC(year, month - 1, day, hour, minute)
       );
 
       const newEvent = {

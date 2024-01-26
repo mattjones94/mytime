@@ -117,13 +117,13 @@
 }
 
 
-.search-modal .type-filters {
+.search-modal .category-filters {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
 
-.search-modal .type-filters button {
+.search-modal .category-filters button {
   margin: 0 5px;
   padding: 8px;
   cursor: pointer;
@@ -133,7 +133,7 @@
   border-radius: 5px;
 }
 
-.search-modal .type-filters button.active {
+.search-modal .category-filters button.active {
   background-color: #2980b9;
 }
 

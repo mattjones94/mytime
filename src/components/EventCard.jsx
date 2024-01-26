@@ -4,9 +4,10 @@ import "./EventCard.css";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
 import ViewModal from "./ViewModal";
-import { getColorScheme } from "../utilities/colorUtils"; // Import the color utility function
+import { getColorScheme } from "../utilities/colorUtils";
+import { updateEvent } from "../data/dataService";
 
-const EventCard = ({ event, categories }) => {
+const EventCard = ({ event, categories, onUpdate, onDelete }) => {
   const formatDate = (date) => {
     if (date instanceof Date) {
       return date.toLocaleTimeString([], {
@@ -14,7 +15,7 @@ const EventCard = ({ event, categories }) => {
         minute: "2-digit",
       });
     }
-    return ""; // or handle the case when date is not a Date object
+    return "";
   };
 
   const { backgroundColor, borderColor, newShade } = getColorScheme(
@@ -32,7 +33,7 @@ const EventCard = ({ event, categories }) => {
   };
 
   const openEditModal = () => {
-    setMenuVisibility(false); // Close the menu when opening the modal
+    setMenuVisibility(false);
     setEditModalVisibility(true);
   };
 
@@ -41,7 +42,7 @@ const EventCard = ({ event, categories }) => {
   };
 
   const openDeleteModal = () => {
-    setMenuVisibility(false); // Close the menu when opening the modal
+    setMenuVisibility(false);
     setDeleteModalVisibility(true);
   };
 
@@ -50,18 +51,22 @@ const EventCard = ({ event, categories }) => {
   };
 
   const confirmDelete = () => {
-    // Perform the deletion logic here
-    // For now, just close the modal
     closeDeleteModal();
+    onDelete(event); // Pass the event to be deleted
   };
 
   const openViewModal = () => {
-    setMenuVisibility(false); // Close the menu when opening the modal
+    setMenuVisibility(false);
     setViewModalVisibility(true);
   };
 
   const closeViewModal = () => {
     setViewModalVisibility(false);
+  };
+  const handleUpdate = (updatedEvent) => {
+    onUpdate(updatedEvent); // Pass both the old and updated events
+    updateEvent(updatedEvent); // Update the event in local storage
+    closeEditModal();
   };
 
   return (
@@ -114,6 +119,7 @@ const EventCard = ({ event, categories }) => {
         <EditModal
           event={event}
           onClose={closeEditModal}
+          onUpdate={handleUpdate}
           categories={categories}
         />
       )}

@@ -9,3 +9,14 @@ export const addEvent = (event) => {
   events.push(event);
   localStorage.setItem("events", JSON.stringify(events));
 };
+
+export const updateEvent = (updatedEvent, setOriginalEvents) => {
+  const events = getEvents();
+  const index = events.findIndex((event) => event.id === updatedEvent.id);
+
+  if (index !== -1) {
+    events[index] = updatedEvent;
+    localStorage.setItem("events", JSON.stringify(events));
+    setOriginalEvents(events); // Update the state
+  }
+};

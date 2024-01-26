@@ -3,7 +3,7 @@ import React from "react";
 import "./Events.css";
 import EventCard from "./EventCard";
 
-const Events = ({ selectedDate, events }) => {
+const Events = ({ selectedDate, events, onUpdate, onDelete }) => {
   const filteredEvents = events.filter((event) => {
     const eventDate = new Date(event.date);
 
@@ -17,7 +17,8 @@ const Events = ({ selectedDate, events }) => {
     );
   });
 
-  // Get the weekday and month with day of the month
+  const categories = [...new Set(events.map((event) => event.category))];
+
   const weekday = selectedDate
     ? new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(selectedDate)
     : "";
@@ -27,6 +28,13 @@ const Events = ({ selectedDate, events }) => {
         day: "numeric",
       })
     : "";
+  const handleUpdate = (oldEvent, updatedEvent) => {
+    onUpdate(oldEvent, updatedEvent);
+  };
+
+  const handleDelete = (event) => {
+    onDelete(event);
+  };
 
   return (
     <div className="events-list">
@@ -41,7 +49,12 @@ const Events = ({ selectedDate, events }) => {
         <ul>
           {filteredEvents.map((event, index) => (
             <li key={index}>
-              <EventCard event={event} />
+              <EventCard
+                event={event}
+                categories={categories}
+                onUpdate={onUpdate} // Pass the onUpdate prop
+                onDelete={handleDelete}
+              />
             </li>
           ))}
         </ul>

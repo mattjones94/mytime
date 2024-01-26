@@ -1,3 +1,4 @@
+// ProximityEventCard.jsx
 import React, { useState } from "react";
 import "./ProximityEventCard.css";
 import ViewModal from "./ViewModal";
@@ -55,6 +56,12 @@ const ProximityEventCard = ({ eventsData }) => {
   return (
     <div className="proximity-event-card-container">
       {sortedEventsData.map((data, index) => {
+        if (!data.category) {
+          console.error(`Event at index ${index} has no category:`, data);
+          // Provide a default category or skip rendering for events without a category
+          return null;
+        }
+
         const { backgroundColor, borderColor } = getColorScheme(data.category);
 
         return (
